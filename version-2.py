@@ -3,16 +3,23 @@ def to_binary(ascii_string):
     return ''.join(format(ord(char), '08b') for char in ascii_string)
 
 # Fungsi untuk konversi ke heksadesimal
+
+
 def to_hex(ascii_string):
     return ''.join(hex(ord(char))[2:] for char in ascii_string)
 
 # Fungsi untuk konversi ke oktal
+
+
 def to_octal(ascii_string):
     return ''.join(format(ord(char), '03o') for char in ascii_string)
 
 # Fungsi untuk konversi ke bilangan desimal
+
+
 def to_decimal(ascii_string):
     return ''.join(str(ord(char)) for char in ascii_string)
+
 
 # Menu utama
 while True:

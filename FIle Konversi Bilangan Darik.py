@@ -3,7 +3,7 @@ try:
     print('Konversi dari :')
     print('1. Desimal')
     print('2. Biner')
-    print('3. OKTAL')
+    print('3. Oktal')
     print('4. Hexadecimal')
     print('5. ASCII')
     print('0. exit')
@@ -83,7 +83,7 @@ try:
                     if hasil == 15:
                         hasil = 'F'
                     cetak.insert(0, str(hasil))
-                    desimal = desimal//16  # bilangan desimal dibagi 16 dan tanpa menghasilkan angka koma dengan menggunakan '//' untuk mengubah nilainya. untuk keperluan modulus selanjutnya
+                    desimal = desimal//16
                     if desimal == 0:
                         for i in range(len(cetak)):
                             tampil += cetak[i]
@@ -269,52 +269,26 @@ try:
                 print('')
             # HEXA - Biner
             if menu == 2:
-                bin = input('Masukan Hexadesimal : :')
+                hexa = input('Masukkan heksadesimal: ')
 
-                for i in range(len(bin)):
-                    if bin[i] != 'a' or bin[i] != 'b' or bin[i] != 'c' or bin[i] != 'd' or bin[i] != 'e' or bin[i] != 'f':
-                        a = False
+                for digit in hexa:
+                    if digit not in '0123456789ABCDEFabcdef':
+                        print('Input tidak valid.')
+                        exit()
+
+                biner = ''
+                for digit in hexa:
+                    if digit in '0123456789':
+                        biner += bin(int(digit))[2:].zfill(4)
                     else:
-                        a = True
-
-                while a == False:
-                    for i in range(len(bin)):
-                        if bin[i] != 'a' or bin[i] != 'b' or bin[i] != 'c' or bin[i] != 'd' or bin[i] != 'e' or bin[i] != 'f':
-                            a = False
-                            break
+                        if digit in 'ABCDEF':
+                            nilai = 10 + 'ABCDEF'.index(digit)
                         else:
-                            a = True
+                            nilai = 10 + 'abcdef'.index(digit)
+                        biner += bin(nilai)[2:]
 
-                print('')
-                for i in range(len(bin)):
-                    pembalik.insert(0, bin[i])  # membalikkan biner
-                for i in range(len(pembalik)):
-                    biner += int(pembalik[i])*(2**i)
+                print('Hasilnya Adalah:', biner)
 
-                for i in range(len(bin)):
-                    if bin[i] == 'A':
-                        hasil = 10
-                    if bin[i] == 'B':
-                        hasil = 11
-                    if bin[i] == 'C':
-                        hasil = 12
-                    if bin[i] == 'D':
-                        hasil = 13
-                    if bin[i] == 'E':
-                        hasil = 14
-                    if bin[i] == 'F':
-                        hasil = 15
-                    hexa += hasil*(16**i)
-
-                while hexa != 0:
-                    hasil = hexa % 2
-                    cetak.insert(0, str(hasil))
-                    hexa = hexa//2
-                    if hexa == 0:
-                        for i in range(len(cetak)):
-                            tampil += cetak[i]
-                print('Hasilnya Adalah : ', tampil)
-                print('')
             # HEXA - Oktal
             if menu == 3:
                 bin = input('Masukan Hexadesimal :')
@@ -337,7 +311,7 @@ try:
                 while hexa != 0:
                     hasil = hexa % 8
                     cetak.insert(0, str(hasil))
-                    hexa = hexa//8
+                    hexa = hexa//84
                     if hexa == 0:
                         for i in range(len(cetak)):
                             tampil += cetak[i]
@@ -382,7 +356,7 @@ try:
         print('Konversi dari :')
         print('1. Desimal')
         print('2. Biner')
-        print('3. OKTAL')
+        print('3. Oktal')
         print('4. Hexadecimal')
         print('5. ASCII')
         print('0. exit')
